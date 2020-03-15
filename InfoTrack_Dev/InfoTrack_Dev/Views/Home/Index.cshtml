@@ -1,0 +1,49 @@
+﻿
+<br>
+<br>
+
+@if (@ViewBag.Message.error != "")
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Message.error
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <label>Keyword</label>
+    <input type="text" class="form-control" id="KeywordInput" name="KeywordInput" value="@ViewBag.Message.keyword" />
+    <br />
+    <label>File</label>
+    <input type="text" class="form-control" id="FileInput" name="FileInput" value="@ViewBag.Message.filename" />
+    <br />
+
+    <input type="submit" class="btn btn-success" value="Submit" />
+
+}
+
+<br>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">URL Count</th>
+            <th scope="col">Text Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.Message.urlCount</td>
+            <td>@ViewBag.Message.textCount</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<p>Appears on lines:</p>
+@foreach (var line in ViewBag.Message.lines)
+{
+    <p>@line</p>
+}
